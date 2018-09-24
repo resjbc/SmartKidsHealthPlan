@@ -5,6 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { MyDatePickerTHModule } from 'mydatepicker-th';
+import { MomentModule } from 'ngx-moment';
+import 'moment/locale/th';
+
 
 
 
@@ -18,6 +21,7 @@ import { MyDatePickerTHModule } from 'mydatepicker-th';
     FormsModule,
     ReactiveFormsModule,
     MyDatePickerTHModule,
+    MomentModule,
     BsDatepickerModule.forRoot(),
   ],
   providers: [],
