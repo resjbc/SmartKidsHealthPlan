@@ -42,6 +42,8 @@ export class AppComponent implements OnInit {
       60: "- ทาฟลูออไรด์วาร์นิซ ,ตรวจฟัน<br/>- ประเมินภาวะโภชนาการ และการเจริญเติบโต<br/>- เข้ารับบริการตรวจประเมินสุขภาพครั้งที่5"
     }
 
+  showPlan: boolean = false;  
+
 
   private myDatePickerOptions: IMyOptions = {
     todayBtnTxt: 'วันนี้',
@@ -74,13 +76,13 @@ export class AppComponent implements OnInit {
       myDate: ['', Validators.required]
       // other controls are here...
     });
-
+/*
     let today = new Date().toLocaleDateString();
     console.log(today);
 
     let todays = new Date().toISOString().slice(0, 10)
 
-    console.log(todays)
+    console.log(todays)*/
 
 
   }
@@ -107,9 +109,15 @@ export class AppComponent implements OnInit {
 
   onDateChanged(event: IMyDateModel) {
     // event properties are: event.date, event.jsdate, event.formatted and event.epoc
+    //if()
     console.log(event);
-
     this.plans.splice(0, this.plans.length);
+
+    if(event.epoc == 0) {
+      this.showPlan = false;
+      return;
+    }
+    
 
     this.plans.push(
       {
@@ -169,7 +177,8 @@ export class AppComponent implements OnInit {
       month = nextmonth;
     }
 
-    console.log(this.plans);
+    this.showPlan = true;
+    //console.log(this.plans);
   }
 
   YearThai(year: any){

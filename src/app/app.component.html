@@ -2,29 +2,34 @@
   <div class="cover"></div>
 </section>
 <section class="login-content">
-  <div class="logo">
-    <h1>Vali</h1>
+  <div class="text-warning">
+    <h1>Pattani Smart Kids</h1>
   </div>
+  <div class="text-white">
+  <h3>Health Promotion Plan</h3>
+  <br/>
+</div>
   <div class="login-box">
     <form class="login-form" [formGroup]="myForm" novalidate >
-      <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+      <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>ระบุวันแรกเกิด</h3>
       <div class="form-group">
         <my-date-picker-th name="mydate" [options]="myDatePickerOptions" formControlName="myDate" (dateChanged)="onDateChanged($event)">
         </my-date-picker-th>
       </div>
       <div class="form-group">
         <div class="form-group btn-container">
-          <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN IN</button>
+          <button [disabled]="!showPlan" class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>ปริ้น</button>
         </div>
       </div>
     </form>
   </div>
 
-
+<br/>
+<br/>
   
-<div class="col-md-12">
+<div class="col-md-12" *ngIf="showPlan">
   <div class="tile">
-    <h3 class="tile-title">Contextual Classes</h3>
+    <h3 class="tile-title">ตัวอย่าง</h3>
     <table class="table table-bordered">
       <thead>
         <tr>
