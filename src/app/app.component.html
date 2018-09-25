@@ -1,3 +1,4 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
 <section class="material-half-bg">
   <div class="cover"></div>
 </section>
@@ -17,8 +18,14 @@
         </my-date-picker-th>
       </div>
       <div class="form-group">
+        <input class="form-control" type="text" placeholder="ชื่อ - นามสกุล" formControlName="name">
+      </div>
+      <div class="form-group">
+        <textarea  class="form-control" type="text" placeholder="ที่อยู่" formControlName="address" rows="5"></textarea>
+      </div>
+      <div class="form-group">
         <div class="form-group btn-container">
-          <button (click)="print()" [disabled]="!showPlan" class="btn btn-primary btn-block"><i class="fa fa-print"></i>ปริ้น</button>
+          <button (click)="print()" [disabled]="!showPlan" class="btn btn-primary btn-block"><i class="fa fa-print"></i>พิมพ์</button>
           <!--<a class="btn btn-primary" href="javascript:window.print();" target="_blank">
             <i class="fa fa-print"></i> Print
           </a>-->
@@ -30,26 +37,31 @@
   <br />
   <br />
 </section>
-  <div  class="col-md-12" *ngIf="showPlan">
-    <div class="tile">
-      <h3 class="tile-title">ตัวอย่าง</h3>
-      <table id="print-section"  class="table table table-hover"  >
-        <thead>
-          <tr>
-            <th>ช่วงอายุ</th>
-            <th>อายุ</th>
-            <th>วันที่มารับบริการ</th>
-            <th>กิจกรรม</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="table" *ngFor="let plan of plans">
-            <td>{{plan.ageLength}} ปี</td>
-            <td>{{plan.age}}</td>
-            <td>{{plan.visit_date | amDateFormat:'DD/MM'}}/{{YearThai(plan.visit_date | amDateFormat:'YYYY')}}</td>
-            <td [innerHTML]="plan.activity"></td>
-          </tr>
-        </tbody>
-      </table>
+<div class="col-md-12" *ngIf="showPlan"  id="convert">
+  <div class="tile">
+    <h3 class="tile-title">Health Promotion Plan</h3>
+    <div class="form-group">
+      <label class="control-label" *ngIf="myForm.controls.name.value"><h5>ชื่อ&nbsp;{{ myForm.controls.name.value }}</h5></label>
+      <label class="control-label" *ngIf="myForm.controls.name.value"><h5>&nbsp;ที่อยู่&nbsp;{{ myForm.controls.address.value }}</h5></label>
     </div>
+
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-warning">
+          <th>ช่วงอายุ</th>
+          <th>อายุ</th>
+          <th>วันที่มารับบริการ</th>
+          <th>กิจกรรม</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table" *ngFor="let plan of plans">
+          <td class="table-success">{{plan.ageLength}} ปี</td>
+          <td class="table-light">{{plan.age}}</td>
+          <td class="table-info">{{plan.visit_date | amDateFormat:'DD/MM'}}/{{YearThai(plan.visit_date | amDateFormat:'YYYY')}}</td>
+          <td class="table-light" [innerHTML]="plan.activity"></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
