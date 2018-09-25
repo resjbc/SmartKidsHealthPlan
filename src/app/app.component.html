@@ -1,16 +1,16 @@
 <section class="material-half-bg">
   <div class="cover"></div>
 </section>
-<section class="login-content">
+<section class="login-content" id="DivBody">
   <div class="text-warning">
     <h1>Pattani Smart Kids</h1>
   </div>
   <div class="text-white">
-  <h3>Health Promotion Plan</h3>
-  <br/>
-</div>
+    <h3>Health Promotion Plan</h3>
+    <br />
+  </div>
   <div class="login-box">
-    <form class="login-form" [formGroup]="myForm" novalidate >
+    <form class="login-form" [formGroup]="myForm" novalidate>
       <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>ระบุวันแรกเกิด</h3>
       <div class="form-group">
         <my-date-picker-th name="mydate" [options]="myDatePickerOptions" formControlName="myDate" (dateChanged)="onDateChanged($event)">
@@ -18,35 +18,38 @@
       </div>
       <div class="form-group">
         <div class="form-group btn-container">
-          <button [disabled]="!showPlan" class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>ปริ้น</button>
+          <button (click)="print()" [disabled]="!showPlan" class="btn btn-primary btn-block"><i class="fa fa-print"></i>ปริ้น</button>
+          <!--<a class="btn btn-primary" href="javascript:window.print();" target="_blank">
+            <i class="fa fa-print"></i> Print
+          </a>-->
         </div>
       </div>
     </form>
   </div>
 
-<br/>
-<br/>
-  
-<div class="col-md-12" *ngIf="showPlan">
-  <div class="tile">
-    <h3 class="tile-title">ตัวอย่าง</h3>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>ช่วงอายุ</th>
-          <th>อายุ</th>
-          <th>วันที่มารับบริการ</th>
-          <th>กิจกรรม</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="table" *ngFor="let plan of plans" >
-          <td>{{plan.ageLength}} ปี</td>
-          <td>{{plan.age}}</td>
-          <td>{{plan.visit_date | amDateFormat:'DD/MM'}}/{{YearThai(plan.visit_date | amDateFormat:'YYYY')}}</td>
-          <td [innerHTML] = "plan.activity"></td>
-        </tr>
-      </tbody>
-    </table>
+  <br />
+  <br />
+</section>
+  <div  class="col-md-12" *ngIf="showPlan">
+    <div class="tile">
+      <h3 class="tile-title">ตัวอย่าง</h3>
+      <table id="print-section"  class="table table table-hover"  >
+        <thead>
+          <tr>
+            <th>ช่วงอายุ</th>
+            <th>อายุ</th>
+            <th>วันที่มารับบริการ</th>
+            <th>กิจกรรม</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table" *ngFor="let plan of plans">
+            <td>{{plan.ageLength}} ปี</td>
+            <td>{{plan.age}}</td>
+            <td>{{plan.visit_date | amDateFormat:'DD/MM'}}/{{YearThai(plan.visit_date | amDateFormat:'YYYY')}}</td>
+            <td [innerHTML]="plan.activity"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
