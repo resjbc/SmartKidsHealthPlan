@@ -5,6 +5,7 @@ import { IModel } from './interfaces';
 import * as html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf'
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { list } from './shareds/list';
 
 
 @Component({
@@ -15,34 +16,11 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class AppComponent implements OnInit {
 
   title = 'app';
+  ages: any;
 
   plans: IModel[] = [];
 
-  ages =
-    {
-      1: "- รับวัคซีนป้องกันวัณโรคตับอักเสบ B",
-      2: `- รับวัคซีนรวมคอตีบ บาดทะยัก ไอกรน ตับอักเสบ B ครั้งที่1 และหยอดโปลีโอ ครั้งที่1 <br/>- <font color=red>โรงเรียนพ่อแม่ คลินิกเด็กดี</font>`,
-      4: "- รับวัคซีนรวมคอตีบ บาดทะยัก ไอกรน ตับอักเสบ B ครั้งที่2 และหยอดโปลีโอ ครั้งที่2 ,ฉีดวัคซีนโปลีโอ(IPV) <br/>- <font color=red><font color=red>โรงเรียนพ่อแม่ คลินิกเด็กดี</font></font>",
-      6: "- รับวัคซีนรวมคอตีบ บาดทะยัก ไอกรน ตับอักเสบ B ครั้งที่3 และหยอดโปลีโอ ครั้งที่3",
-      9: "- รับวัคซีนหัด หัดเยอรมัน คางทูม ครั้งที่1 , คัดกรองพัฒนาการ , ทาฟลูออไรด์วาร์นิซ ,ตรวจฟัน , เข้ารับบริการตรวจประเมินสุขภาพครั้งที่1",
-      12: "- รับวัคซีนป้องกันโรคไข้สมองอักเสบ ครั้งที่1 , ทาฟลูออไรด์วาร์นิซ ,ตรวจฟัน , ประเมินภาวะโภชนาการ และการเจริญเติบโต <br/>- <font color=red>โรงเรียนพ่อแม่ คลินิกเด็กดี</font>",
-      15: "- ทาฟลูออไรด์วาร์นิซ",
-      18: "- คัดกรองพัฒนาการ , รับวัคซีนรวมคอตีบ บาดทะยัก ไอกรน ตับอักเสบ B ครั้งที่4 และหยอดโปลีโอ ครั้งที่4 , ทาฟลูออไรด์วาร์นิซ ,ตรวจฟัน <br/>- เข้ารับบริการตรวจประเมินสุขภาพครั้งที่2",
-      21: "- ทาฟลูออไรด์วาร์นิซ",
-      24: "- ทาฟลูออไรด์วาร์นิซ , ประเมินภาวะโภชนาการ และการเจริญเติบโต<br/>- <font color=red>โรงเรียนพ่อแม่ คลินิกเด็กดี</font>",
-      27: "- ทาฟลูออไรด์วาร์นิซ",
-      30: "- รับวัคซีนหัด หัดเยอรมัน คางทูม ครั้งที่2 , รับวัคซีนป้องกันโรคไข้สมองอักเสบ ครั้งที่2 , ทาฟลูออไรด์วาร์นิซ ,ตรวจฟัน , คัดกรองพัฒนาการ <br/>- เข้ารับบริการตรวจประเมินสุขภาพครั้งที่3",
-      33: "- ทาฟลูออไรด์วาร์นิซ",
-      36: "- ทาฟลูออไรด์วาร์นิซ ,ตรวจฟัน , ประเมินภาวะโภชนาการ และการเจริญเติบโต",
-      39: "- ทาฟลูออไรด์วาร์นิซ",
-      42: "- คัดกรองพัฒนาการ , ทาฟลูออไรด์วาร์นิซ ,ตรวจฟัน<br/>- <font color=red>โรงเรียนพ่อแม่ คลินิกเด็กดี</font>",
-      45: "- ทาฟลูออไรด์วาร์นิซ",
-      48: "- ทาฟลูออไรด์วาร์นิซ , ประเมินภาวะโภชนาการ และการเจริญเติบโต , รับวัคซีนรวมคอตีบ บาดทะยัก ไอกรน และหยอดโปลีโอ ครั้งที่5 <br/>- เข้ารับบริการตรวจประเมินสุขภาพครั้งที่4",
-      51: "- ทาฟลูออไรด์วาร์นิซ",
-      54: "- ทาฟลูออไรด์วาร์นิซ",
-      57: "- ทาฟลูออไรด์วาร์นิซ",
-      60: "- ทาฟลูออไรด์วาร์นิซ ,ตรวจฟัน , ประเมินภาวะโภชนาการ และการเจริญเติบโต , เข้ารับบริการตรวจประเมินสุขภาพครั้งที่5"
-    }
+   
 
   showPlan: boolean = false;
 
@@ -71,8 +49,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    
-
+    this.ages  = list;
     this.myForm = this.formBuilder.group({
       // Empty string means no initial value. Can be also specific date for
       // example: {date: {year: 2018, month: 10, day: 9}} which sets this date to initial
@@ -132,7 +109,7 @@ export class AppComponent implements OnInit {
         ageLength: 1,
         age: "แรกเกิด",
         visit_date: new Date(event.jsdate),
-        activity: "- รับวัคซีนป้องกันวัณโรค"
+        activity: this.ages[61]
       });
 
     let month = new Date(event.date.year + '-' + event.date.month + '-' + event.date.day);
@@ -198,13 +175,11 @@ export class AppComponent implements OnInit {
     html2canvas(data).then(canvas => {
       const contentDataURL = canvas.toDataURL('image/png');
       let pdf = new jspdf('landscape', 'mm', 'a4');
-      pdf.addImage(contentDataURL, 'PNG', 3, 5, 340, 200);
+      pdf.addImage(contentDataURL, 'PNG', 3, 8, 340, 200);
       pdf.setDisplayMode("99");
       pdf.autoPrint();
       pdf.save(`${this.myForm.controls.name.value?this.myForm.controls.name.value:new Date()}.pdf`);
     });
-
-
   }
 
 

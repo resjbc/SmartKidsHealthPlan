@@ -39,12 +39,12 @@
 </section>
 <div class="col-md-12" *ngIf="showPlan"  id="convert">
   <div class="tile">
-    <h3 class="tile-title">Health Promotion Plan</h3>
-    <div class="form-group">
-      <label class="control-label" *ngIf="myForm.controls.name.value"><h5>ชื่อ&nbsp;{{ myForm.controls.name.value }}</h5></label>
-      <label class="control-label" *ngIf="myForm.controls.name.value"><h5>&nbsp;ที่อยู่&nbsp;{{ myForm.controls.address.value }}</h5></label>
+    
+    <div class="form-group" style="text-align: center">
+      <h4 style="text-align: left">Pattani Smart Kids (Health Promotion Plan) แผนการดูแลเด็ก 0-5 ปี สู่เด็กปัตตานีสุขภาพดี เก่งดีมีวินัย (ปัตตานีสมาร์ทคิดส์)</h4>
+      <label class="control-label" *ngIf="myForm.controls.name.value"><strong>ชื่อ&nbsp;{{ myForm.controls.name.value }}</strong></label>
+      <label class="control-label" *ngIf="myForm.controls.name.value"><strong>&nbsp;ที่อยู่&nbsp;{{ myForm.controls.address.value }}</strong></label>
     </div>
-
     <table class="table table-hover">
       <thead>
         <tr class="table-warning">
@@ -60,6 +60,12 @@
           <td class="table-light">{{plan.age}}</td>
           <td class="table-info">{{plan.visit_date | amDateFormat:'DD/MM'}}/{{YearThai(plan.visit_date | amDateFormat:'YYYY')}}</td>
           <td class="table-light" [innerHTML]="plan.activity"></td>
+        </tr>
+        <tr class="table-warning">
+          <td colspan="4">เด็ก 0-5 ปี ได้รับการประเมินภาวะโภชนาการ และการเจริญเติบโต (ชั่งน้ำหนัก วัดส่วนสูง) ในเดือนตุลาคม มกราคม เมษายน และกรกฎาคมของทุกปี</td>
+        </tr>
+        <tr >
+          <td style="text-align: center" colspan="4">นักจัดการสุขภาพประจำตัวเด็ก  : .........................................................เบอร์ติดต่อ : ......................................</td>
         </tr>
       </tbody>
     </table>
