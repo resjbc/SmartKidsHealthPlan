@@ -4,6 +4,7 @@
 </section>
 <section class="login-content" id="DivBody">
   <div class="text-warning">
+    <br/>
     <h1>Pattani Smart Kids</h1>
   </div>
   <div class="text-white">
@@ -40,18 +41,18 @@
 <div class="col-md-12" *ngIf="showPlan"  id="convert">
   <div class="tile">
     
-    <div class="form-group" style="text-align: center">
+    <div class="form-group" style="text-align: right">
       <h4 style="text-align: left">Pattani Smart Kids (Health Promotion Plan) แผนการดูแลเด็ก 0-5 ปี สู่เด็กปัตตานีสุขภาพดี เก่งดีมีวินัย (ปัตตานีสมาร์ทคิดส์)</h4>
-      <label class="control-label" *ngIf="myForm.controls.name.value"><strong>ชื่อ&nbsp;{{ myForm.controls.name.value }}</strong></label>
-      <label class="control-label" *ngIf="myForm.controls.name.value"><strong>&nbsp;ที่อยู่&nbsp;{{ myForm.controls.address.value }}</strong></label>
+      <label class="control-label" *ngIf="myForm.controls.name.value"><strong>ชื่อเด็ก</strong>&nbsp;{{ myForm.controls.name.value }}</label>
+      <label class="control-label" *ngIf="myForm.controls.address.value && myForm.controls.name.value"><strong>&nbsp;ที่อยู่</strong>&nbsp;{{ myForm.controls.address.value }}</label>
     </div>
-    <table class="table table-hover">
+    <table class="table table-hover" >
       <thead>
         <tr class="table-warning">
           <th>ช่วงอายุ</th>
           <th>อายุ</th>
           <th>วันที่มารับบริการ</th>
-          <th>กิจกรรม</th>
+          <th style="text-align: center">กิจกรรม</th>
         </tr>
       </thead>
       <tbody>
@@ -65,7 +66,7 @@
           <td colspan="4">เด็ก 0-5 ปี ได้รับการประเมินภาวะโภชนาการ และการเจริญเติบโต (ชั่งน้ำหนัก วัดส่วนสูง) ในเดือนตุลาคม มกราคม เมษายน และกรกฎาคมของทุกปี</td>
         </tr>
         <tr >
-          <td style="text-align: center" colspan="4">นักจัดการสุขภาพประจำตัวเด็ก  : .........................................................เบอร์ติดต่อ : ......................................</td>
+          <td style="text-align: right" colspan="4"><br/>นักจัดการสุขภาพประจำตัวเด็ก  : .........................................................เบอร์ติดต่อ : ...............................................</td>
         </tr>
       </tbody>
     </table>

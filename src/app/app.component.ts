@@ -175,7 +175,7 @@ export class AppComponent implements OnInit {
     html2canvas(data).then(canvas => {
       const contentDataURL = canvas.toDataURL('image/png');
       let pdf = new jspdf('landscape', 'mm', 'a4');
-      pdf.addImage(contentDataURL, 'PNG', 3, 8, 340, 200);
+      pdf.addImage(contentDataURL, 'PNG', 3, 6, 295, 205);
       pdf.setDisplayMode("99");
       pdf.autoPrint();
       pdf.save(`${this.myForm.controls.name.value?this.myForm.controls.name.value:new Date()}.pdf`);
