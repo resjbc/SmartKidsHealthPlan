@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   plans: IModel[] = [];
 
-   
+
 
   showPlan: boolean = false;
 
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    this.ages  = list;
+    this.ages = list;
     this.myForm = this.formBuilder.group({
       // Empty string means no initial value. Can be also specific date for
       // example: {date: {year: 2018, month: 10, day: 9}} which sets this date to initial
@@ -171,14 +171,27 @@ export class AppComponent implements OnInit {
   }
 
   public print() {
-    var data = document.getElementById('convert');
+    let data = document.getElementById('convert');
+    let todayy = new Date();
+    let dd: any = todayy.getDate();
+    let mm: any = todayy.getMonth() + 1; //January is 0!
+    let yyyy: any = todayy.getFullYear();
+
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+     let today = dd + '-' + mm + '-' + (yyyy+543);
+
     html2canvas(data).then(canvas => {
       const contentDataURL = canvas.toDataURL('image/png');
       let pdf = new jspdf('landscape', 'mm', 'a4');
       pdf.addImage(contentDataURL, 'PNG', 3, 6, 295, 205);
       pdf.setDisplayMode("99");
       pdf.autoPrint();
-      pdf.save(`${this.myForm.controls.name.value?this.myForm.controls.name.value:new Date()}.pdf`);
+      pdf.save(`${this.myForm.controls.name.value ? 'SmartKid_' + this.myForm.controls.name.value : 'SmartKid_' + today}.pdf`);
     });
   }
 
