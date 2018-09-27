@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   showPlan: boolean = false;
 
 
-  private myDatePickerOptions: IMyOptions = {
+  public myDatePickerOptions: IMyOptions = {
     todayBtnTxt: 'วันนี้',
     dateFormat: 'dd/mm/yyyy',
     markCurrentDay: true,
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
     selectionTxtFontSize: '16px',
 
   };
-  private myForm: FormGroup;
+  public myForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
