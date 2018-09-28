@@ -59,7 +59,7 @@
         <tr class="table" *ngFor="let plan of plans">
           <td class="table-success">{{plan.ageLength}} ปี</td>
           <td class="table-light">{{plan.age}}</td>
-          <td class="table-info">{{plan.visit_date | amDateFormat:'DD/MM'}}/{{YearThai(plan.visit_date | amDateFormat:'YYYY')}}</td>
+          <td class="table-info">วัน{{plan.dateThai}} ที่ {{plan.visit_date | amDateFormat:'DD/MM'}}/{{YearThai(plan.visit_date | amDateFormat:'YYYY')}}</td>
           <td class="table-light" [innerHTML]="plan.activity"></td>
         </tr>
         <tr class="table-warning">

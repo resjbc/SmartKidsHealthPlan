@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   ages: any;
 
   plans: IModel[] = [];
+  dayThai = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"]; 
 
 
 
@@ -108,13 +109,15 @@ export class AppComponent implements OnInit {
       {
         ageLength: 1,
         age: "แรกเกิด",
+        dateThai: this.dayThai[new Date(event.jsdate).getDay()],
         visit_date: new Date(event.jsdate),
         activity: this.ages[61]
       });
 
-    let month = new Date(event.date.year + '-' + event.date.month + '-' + event.date.day);
+    //let month = new Date(event.date.year + '-' + event.date.month + '-' + event.date.day);
+    let month = new Date(event.date.year , event.date.month-1 , event.date.day);
     let length;
-    //console.log(length);
+    //console.log(month);
     let nextmonth;
     let ageLength;
 
@@ -150,10 +153,12 @@ export class AppComponent implements OnInit {
 
 
       if (this.ages[i]) {
+        //console.log(nextmonth);
         this.plans.push(
           {
             ageLength: ageLength,
             age: i + " เดือน",
+            dateThai: this.dayThai[nextmonth.getDay()],
             visit_date: new Date(nextmonth),
             activity: this.ages[i]
           });
