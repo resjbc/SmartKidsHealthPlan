@@ -19,11 +19,13 @@ export class AppComponent implements OnInit {
   ages: any;
 
   plans: IModel[] = [];
-  dayThai = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"]; 
-
+  dayThai = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"];
+  dayClinic: number = 2;
 
 
   showPlan: boolean = false;
+
+  dateModel: IMyDateModel;
 
 
   public myDatePickerOptions: IMyOptions = {
@@ -57,7 +59,8 @@ export class AppComponent implements OnInit {
       // value.
       name: [''],
       address: [''],
-      myDate: ['', Validators.required]
+      myDate: ['', Validators.required],
+      clinicDay: ['2', Validators.required]
       // other controls are here...
     });
     /*
@@ -94,6 +97,7 @@ export class AppComponent implements OnInit {
   }
 
   onDateChanged(event: IMyDateModel) {
+    this.dateModel = event;
     // event properties are: event.date, event.jsdate, event.formatted and event.epoc
     //if()
     //console.log(event);
@@ -115,7 +119,7 @@ export class AppComponent implements OnInit {
       });
 
     //let month = new Date(event.date.year + '-' + event.date.month + '-' + event.date.day);
-    let month = new Date(event.date.year , event.date.month-1 , event.date.day);
+    let month = new Date(event.date.year, event.date.month - 1, event.date.day);
     let length;
     //console.log(month);
     let nextmonth;
@@ -133,16 +137,21 @@ export class AppComponent implements OnInit {
       //console.log(length);
       nextmonth.setDate(month.getDate() + length);
 
+      const dayClinic: number = this.dayClinic == 2 ? 1 : 2;
 
 
       if (nextmonth.getDay() == 6) {
-        nextmonth.setDate(nextmonth.getDate() + 2);
-        //console.log(nextmonth);
-
+        nextmonth.setDate(nextmonth.getDate() + (2 + dayClinic));
       }
       else if (nextmonth.getDay() == 0) {
-        nextmonth.setDate(nextmonth.getDate() + 1);
+        nextmonth.setDate(nextmonth.getDate() + (1 + dayClinic));
         //console.log(nextmonth);
+      }
+      else if (nextmonth.getDay() == 4) {
+        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 5 : 6));
+      }
+      else if (nextmonth.getDay() == 5) {
+        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 4 : 5));
       }
 
       if (i >= 1 && i <= 12) ageLength = 1;
@@ -188,7 +197,7 @@ export class AppComponent implements OnInit {
     if (mm < 10) {
       mm = '0' + mm;
     }
-     let today = dd + '-' + mm + '-' + (yyyy+543);
+    let today = dd + '-' + mm + '-' + (yyyy + 543);
 
     html2canvas(data).then(canvas => {
       const contentDataURL = canvas.toDataURL('image/png');
@@ -198,6 +207,11 @@ export class AppComponent implements OnInit {
       pdf.autoPrint();
       pdf.save(`${this.myForm.controls.name.value ? 'SmartKid_' + this.myForm.controls.name.value : 'SmartKid_' + today}.pdf`);
     });
+  }
+
+  SetClinicDay() {
+    this.dayClinic = this.myForm.controls.clinicDay.value;
+    this.onDateChanged(this.dateModel);
   }
 
 
