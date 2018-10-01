@@ -100,9 +100,9 @@ export class AppComponent implements OnInit {
     this.dateModel = event;
     // event properties are: event.date, event.jsdate, event.formatted and event.epoc
     //if()
-    //console.log(event);
+    //console.log(this.dateModel);
     this.plans.splice(0, this.plans.length);
-
+    //this.plans = [];
     if (event.epoc == 0) {
       this.showPlan = false;
       return;
@@ -127,7 +127,7 @@ export class AppComponent implements OnInit {
 
     //console.log(this.plans);
 
-
+    //console.log(month.getDay());
 
 
     for (let i = 1; i <= 60; i++) {
@@ -135,16 +135,16 @@ export class AppComponent implements OnInit {
       nextmonth = month;
       length = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
       //console.log(length);
-      nextmonth.setDate(month.getDate() + length);
-
-      const dayClinic: number = this.dayClinic == 2 ? 1 : 2;
+      
+      nextmonth.setDate(nextmonth.getDate()+length);
 
 
       if (nextmonth.getDay() == 6) {
-        nextmonth.setDate(nextmonth.getDate() + (2 + dayClinic));
+        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 3 : 4));
+        //console.log(nextmonth);
       }
       else if (nextmonth.getDay() == 0) {
-        nextmonth.setDate(nextmonth.getDate() + (1 + dayClinic));
+        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 2 : 3));
         //console.log(nextmonth);
       }
       else if (nextmonth.getDay() == 4) {
@@ -153,6 +153,16 @@ export class AppComponent implements OnInit {
       else if (nextmonth.getDay() == 5) {
         nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 4 : 5));
       }
+      else if (nextmonth.getDay() == 1) {
+        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 1 : 2));
+      }
+      else if (nextmonth.getDay() == 2) {
+        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 0 : 1));
+      }
+      else if (nextmonth.getDay() == 3) {
+        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 6 : 0));
+      }
+
 
       if (i >= 1 && i <= 12) ageLength = 1;
       else if (i >= 15 && i <= 24) ageLength = 2;
