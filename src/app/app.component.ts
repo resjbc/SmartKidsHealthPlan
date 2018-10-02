@@ -6,6 +6,8 @@ import * as html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf'
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { list } from './shareds/list';
+import { AlertService } from './shareds/alert.service';
+import { PersonService } from './services/person.service';
 
 
 @Component({
@@ -47,7 +49,9 @@ export class AppComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private spinnerService: Ng4LoadingSpinnerService
+    private spinnerService: Ng4LoadingSpinnerService,
+    private alert: AlertService,
+    private person: PersonService
   ) { }
 
   ngOnInit() {
@@ -135,8 +139,8 @@ export class AppComponent implements OnInit {
       nextmonth = month;
       length = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
       //console.log(length);
-      
-      nextmonth.setDate(nextmonth.getDate()+length);
+
+      nextmonth.setDate(nextmonth.getDate() + length);
 
 
       if (nextmonth.getDay() == 6) {
@@ -222,6 +226,21 @@ export class AppComponent implements OnInit {
   SetClinicDay() {
     this.dayClinic = this.myForm.controls.clinicDay.value;
     this.onDateChanged(this.dateModel);
+  }
+
+  onSearchPid(pid: string) {
+    if (!parseInt(pid) || !(pid.trim().length == 13)) {
+      this.alert.notify('ตรวจสอบหมายเลขบัตรประชาชน');
+      return;
+    }
+    this.person
+        .getPerson(pid)
+        .then(person => 
+          {
+            console.log(person);
+          })
+        .catch(err => this.alert.notify(err.error.Message));
+
   }
 
 

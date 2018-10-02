@@ -8,7 +8,8 @@ import { MyDatePickerTHModule } from 'mydatepicker-th';
 import { MomentModule } from 'ngx-moment';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import 'moment/locale/th';
-
+import { HttpClientModule } from "@angular/common/http";
+import { AlertService } from './shareds/alert.service';
 
 
 
@@ -26,8 +27,9 @@ import 'moment/locale/th';
     MomentModule,
     BsDatepickerModule.forRoot(),
     Ng4LoadingSpinnerModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
