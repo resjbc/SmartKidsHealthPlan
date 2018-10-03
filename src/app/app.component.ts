@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
   showPlan: boolean = false;
 
   dateModel: IMyDateModel;
+  today:any;
 
 
   public myDatePickerOptions: IMyOptions = {
@@ -74,6 +75,8 @@ export class AppComponent implements OnInit {
       clinicDay: ['1', Validators.required]
       // other controls are here...
     });
+
+    this.today = new Date()
     /*
         let today = new Date().toLocaleDateString();
         console.log(today);
@@ -205,8 +208,7 @@ export class AppComponent implements OnInit {
     return parseInt(year) + 543;
   }
 
-  public print() {
-    let data = document.getElementById('convert');
+  toDay(){
     let todayy = new Date();
     let dd: any = todayy.getDate();
     let mm: any = todayy.getMonth() + 1; //January is 0!
@@ -218,7 +220,13 @@ export class AppComponent implements OnInit {
     if (mm < 10) {
       mm = '0' + mm;
     }
-    let today = dd + '-' + mm + '-' + (yyyy + 543);
+    let today = dd + '/' + mm + '/' + (yyyy + 543);
+    return today;
+  }
+
+  public print() {
+    let data = document.getElementById('convert');
+    
 
     html2canvas(data).then(canvas => {
       const contentDataURL = canvas.toDataURL('image/png');
@@ -226,7 +234,7 @@ export class AppComponent implements OnInit {
       pdf.addImage(contentDataURL, 'PNG', 3, 6, 295, 205);
       pdf.setDisplayMode("99");
       pdf.autoPrint();
-      pdf.save(`${this.myForm.controls.name.value ? 'SmartKid_' + this.myForm.controls.name.value : 'SmartKid_' + today}.pdf`);
+      pdf.save(`${this.myForm.controls.name.value ? this.toDay()+"_"+'SmartKid_' + this.myForm.controls.name.value : 'SmartKid_' +"ไม่ระบุชื่อ_"+ this.toDay()}.pdf`);
     });
   }
 

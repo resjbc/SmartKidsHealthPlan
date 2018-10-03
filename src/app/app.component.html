@@ -9,6 +9,7 @@
   <div class="text-white">
     <h3>Health Promotion Plan</h3>
   </div>
+  <br/>
   <div class="login-box">
     <form class="login-form" [formGroup]="myForm" novalidate>
       <h4 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>ระบุวันแรกเกิด</h4>
@@ -55,8 +56,13 @@
   <div class="tile">
 
     <div class="form-group" style="text-align: right">
-      <h4 style="text-align: left">Pattani Smart Kids (Health Promotion Plan) แผนการดูแลเด็ก 0-5 ปี
-        สู่เด็กปัตตานีสุขภาพดี เก่งดีมีวินัย (ปัตตานีสมาร์ทคิดส์)</h4>
+      <div class="row">
+        <div class="col-md-9"><h4 style="text-align: left">Pattani Smart Kids (Health Promotion Plan) แผนการดูแลเด็ก 0-5 ปี
+            สู่เด็กปัตตานีสุขภาพดี เก่งดีมีวินัย (ปัตตานีสมาร์ทคิดส์)</h4></div>
+        <div class="col-md-3"><strong >{{toDay()}}</strong></div>
+      </div>
+      
+      
       <label class="control-label" *ngIf="myForm.controls.name.value"><strong>ชื่อเด็ก</strong>&nbsp;{{
         myForm.controls.name.value }}</label>
       <label class="control-label" *ngIf="myForm.controls.address.value && myForm.controls.name.value"><strong>&nbsp;ที่อยู่</strong>&nbsp;{{
@@ -84,7 +90,8 @@
             ในเดือนตุลาคม มกราคม เมษายน และกรกฎาคมของทุกปี</td>
         </tr>
         <tr>
-          <td style="text-align: right" colspan="4"><br />นักจัดการสุขภาพประจำตัวเด็ก :
+          <td style="text-align: left"><br />v1.1</td>
+          <td style="text-align: right" colspan="3"><br />นักจัดการสุขภาพประจำตัวเด็ก :
             .........................................................เบอร์ติดต่อ :
             ...............................................</td>
         </tr>
