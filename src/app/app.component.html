@@ -9,7 +9,7 @@
   <div class="text-white">
     <h3>Health Promotion Plan</h3>
   </div>
-  <br/>
+  <br />
   <div class="login-box">
     <form class="login-form" [formGroup]="myForm" novalidate>
       <h4 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>ระบุวันแรกเกิด</h4>
@@ -52,17 +52,20 @@
   <br />
   <br />
 </section>
+
 <div class="col-md-12" *ngIf="showPlan" id="convert">
   <div class="tile">
 
     <div class="form-group" style="text-align: right">
       <div class="row">
-        <div class="col-md-9"><h4 style="text-align: left">Pattani Smart Kids (Health Promotion Plan) แผนการดูแลเด็ก 0-5 ปี
-            สู่เด็กปัตตานีสุขภาพดี เก่งดีมีวินัย (ปัตตานีสมาร์ทคิดส์)</h4></div>
-        <div class="col-md-3"><strong >{{toDay()}}</strong></div>
+        <div class="col-md-9">
+          <h4 style="text-align: left">Pattani Smart Kids (Health Promotion Plan) แผนการดูแลเด็ก 0-5 ปี
+            สู่เด็กปัตตานีสุขภาพดี เก่งดีมีวินัย (ปัตตานีสมาร์ทคิดส์)</h4>
+        </div>
+        <div class="col-md-3"><strong>{{toDay()}}</strong></div>
       </div>
-      
-      
+
+
       <label class="control-label" *ngIf="myForm.controls.name.value"><strong>ชื่อเด็ก</strong>&nbsp;{{
         myForm.controls.name.value }}</label>
       <label class="control-label" *ngIf="myForm.controls.address.value && myForm.controls.name.value"><strong>&nbsp;ที่อยู่</strong>&nbsp;{{
@@ -99,3 +102,5 @@
     </table>
   </div>
 </div>
+
+
