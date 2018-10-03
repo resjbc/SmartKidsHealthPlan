@@ -16,23 +16,26 @@
         <my-date-picker-th name="mydate" [options]="myDatePickerOptions" formControlName="myDate" (dateChanged)="onDateChanged($event)">
         </my-date-picker-th>
       </div>
-      <div class="input-group mb-3">
-          <input type="text" class="form-control" #searchPID placeholder="เลขบัตรประชาชน" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary icon-btn" (click)="onSearchPid(searchPID.value)" type="button"><i class="fa fa-search"></i>ค้นหา</button>
-          </div>
+      <!--<div class="input-group mb-3">
+        <input type="text" class="form-control" #searchPID placeholder="เลขบัตรประชาชน" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary icon-btn" (click)="onSearchPid(searchPID.value)" type="button"><i class="fa fa-search"></i>ค้นหา</button>
         </div>
+      </div>-->
       <div class="form-group">
         <select class="form-control" (change)="SetClinicDay()" formControlName="clinicDay">
-          <option value="2" selected>มารับบริการทุกวันอังคาร</option>
+          <option value="1" selected>มารับบริการทุกวันจันทร์</option>
+          <option value="2">มารับบริการทุกวันอังคาร</option>
           <option value="3">มารับบริการทุกวันพุธ</option>
+          <option value="4">มารับบริการทุกวันพฤหัสบดี</option>
+          <option value="5">มารับบริการทุกวันศุกร์</option>
         </select>
       </div>
       <div class="form-group">
         <input class="form-control" type="text" placeholder="ชื่อ - นามสกุล" formControlName="name">
       </div>
       <div class="form-group">
-        <textarea class="form-control" type="text" placeholder="ที่อยู่" formControlName="address" rows="1"></textarea>
+        <textarea class="form-control" type="text" placeholder="ที่อยู่" formControlName="address" rows="2"></textarea>
       </div>
       <div class="form-group">
         <div class="form-group btn-container">

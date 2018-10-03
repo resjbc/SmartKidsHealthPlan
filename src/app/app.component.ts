@@ -5,7 +5,7 @@ import { IModel } from './interfaces';
 import * as html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf'
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-import { list } from './shareds/list';
+import { list, SatClinicday, SunClinicday, MonClinicday, TuesClinicday, WedClinicday, thursClinicday, FrisClinicday } from './shareds/list';
 import { AlertService } from './shareds/alert.service';
 import { PersonService } from './services/person.service';
 
@@ -22,8 +22,15 @@ export class AppComponent implements OnInit {
 
   plans: IModel[] = [];
   dayThai = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"];
-  dayClinic: number = 2;
-
+  dayClinic: number = 1;
+  
+  SatClinicday = SatClinicday;
+  SunClinicday = SunClinicday;
+  MonClinicday = MonClinicday;
+  TuesClinicday = TuesClinicday;
+  WedClinicday = WedClinicday;
+  thursClinicday = thursClinicday;
+  FrisClinicday = FrisClinicday;
 
   showPlan: boolean = false;
 
@@ -64,7 +71,7 @@ export class AppComponent implements OnInit {
       name: [''],
       address: [''],
       myDate: ['', Validators.required],
-      clinicDay: ['2', Validators.required]
+      clinicDay: ['1', Validators.required]
       // other controls are here...
     });
     /*
@@ -144,27 +151,27 @@ export class AppComponent implements OnInit {
 
 
       if (nextmonth.getDay() == 6) {
-        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 3 : 4));
+        nextmonth.setDate(nextmonth.getDate() + (this.SatClinicday[this.dayClinic]));
         //console.log(nextmonth);
       }
       else if (nextmonth.getDay() == 0) {
-        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 2 : 3));
+        nextmonth.setDate(nextmonth.getDate() + (this.SunClinicday[this.dayClinic]));
         //console.log(nextmonth);
       }
       else if (nextmonth.getDay() == 4) {
-        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 5 : 6));
+        nextmonth.setDate(nextmonth.getDate() + (this.thursClinicday[this.dayClinic]));
       }
       else if (nextmonth.getDay() == 5) {
-        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 4 : 5));
+        nextmonth.setDate(nextmonth.getDate() + (this.FrisClinicday[this.dayClinic]));
       }
       else if (nextmonth.getDay() == 1) {
-        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 1 : 2));
+        nextmonth.setDate(nextmonth.getDate() + (this.MonClinicday[this.dayClinic]));
       }
       else if (nextmonth.getDay() == 2) {
-        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 0 : 1));
+        nextmonth.setDate(nextmonth.getDate() + (this.TuesClinicday[this.dayClinic]));
       }
       else if (nextmonth.getDay() == 3) {
-        nextmonth.setDate(nextmonth.getDate() + (this.dayClinic == 2 ? 6 : 0));
+        nextmonth.setDate(nextmonth.getDate() + (this.WedClinicday[this.dayClinic]));
       }
 
 
