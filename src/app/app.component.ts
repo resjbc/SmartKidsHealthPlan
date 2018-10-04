@@ -117,7 +117,9 @@ export class AppComponent implements OnInit {
     //console.log(this.dateModel);
     this.plans.splice(0, this.plans.length);
     //this.plans = [];
-    if (event.epoc == 0) {
+    //console.log(event == null);
+
+    if (event == null || event.epoc == 0) {
       this.showPlan = false;
       return;
     }

@@ -40,11 +40,16 @@
       </div>
       <div class="form-group">
         <div class="form-group btn-container">
-          <button (click)="print()" [disabled]="!showPlan" class="btn btn-primary btn-block"><i class="fa fa-print"></i>พิมพ์</button>
+          <button (click)="print()" [disabled]="!showPlan" class="btn btn-danger btn-block"><i class="fa fa-print"></i>พิมพ์</button>
           <!--<a class="btn btn-primary" href="javascript:window.print();" target="_blank">
             <i class="fa fa-print"></i> Print
           </a>-->
         </div>
+      </div>
+      <div class="form-group" style="text-align: center">
+        <a href="./assets/shareds/SmartKidsHealthPromotionPlan.pdf" >
+          คู่มือการใช้งาน
+        </a>
       </div>
     </form>
   </div>
@@ -58,11 +63,11 @@
 
     <div class="form-group" style="text-align: right">
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-11">
           <h4 style="text-align: left">Pattani Smart Kids (Health Promotion Plan) แผนการดูแลเด็ก 0-5 ปี
             สู่เด็กปัตตานีสุขภาพดี เก่งดีมีวินัย (ปัตตานีสมาร์ทคิดส์)</h4>
         </div>
-        <div class="col-md-3"><strong>{{toDay()}}</strong></div>
+        <div class="col-md-1"><strong>{{toDay()}}</strong></div>
       </div>
 
 
