@@ -5,10 +5,10 @@ import { IModel } from './interfaces';
 import * as html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf'
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-import { list, SatClinicday, SunClinicday, MonClinicday, TuesClinicday, WedClinicday, thursClinicday, FrisClinicday } from './shareds/list';
+import { SatClinicday, SunClinicday, MonClinicday, TuesClinicday, WedClinicday, thursClinicday, FrisClinicday } from './shareds/list';
 import { AlertService } from './shareds/alert.service';
 import { PersonService } from './services/person.service';
-
+declare const list;
 
 @Component({
   selector: 'app-root',
