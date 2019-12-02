@@ -14,7 +14,7 @@
     <form class="login-form" [formGroup]="myForm" novalidate>
       <h4 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>ระบุวันแรกเกิด</h4>
       <div class="form-group">
-        <my-date-picker-th name="mydate" [options]="myDatePickerOptions" formControlName="myDate" (dateChanged)="onDateChanged($event)">
+        <my-date-picker-th name="mydate" [options]="myDatePickerOptions"  [(ngModel)]="today" formControlName="myDate" (dateChanged)="onDateChanged($event)">
         </my-date-picker-th>
       </div>
       <!--<div class="input-group mb-3">
@@ -37,6 +37,12 @@
       </div>
       <div class="form-group">
         <textarea class="form-control" type="text" placeholder="ที่อยู่" formControlName="address" rows="2"></textarea>
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="ชื่อ - นามสกุลเจ้าหน้าที่" formControlName="nameEmp">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="เบอร์ติดต่อเจ้าหน้าที่" formControlName="telEmp" >
       </div>
       <div class="form-group">
         <div class="form-group btn-container">
@@ -99,13 +105,18 @@
         </tr>
         <tr>
           <td style="text-align: left"><br />v1.1</td>
-          <td style="text-align: right" colspan="3"><br />นักจัดการสุขภาพประจำตัวเด็ก :
-            .........................................................เบอร์ติดต่อ :
-            ...............................................</td>
+          <td style="text-align: right" colspan="3">
+            <br />
+            <label class="control-label" *ngIf="myForm.controls.nameEmp.value"> <strong>นักจัดการสุขภาพประจำตัวเด็ก :</strong> {{myForm.controls.nameEmp.value }}</label> 
+              <label class="control-label" *ngIf="!myForm.controls.nameEmp.value"> <strong>นักจัดการสุขภาพประจำตัวเด็ก :</strong> ...............................................................</label> 
+              <label class="control-label" *ngIf="myForm.controls.telEmp.value"> <strong>&nbsp;เบอร์ติดต่อ :</strong> {{myForm.controls.telEmp.value }}</label> 
+              <label class="control-label" *ngIf="!myForm.controls.telEmp.value"> <strong>&nbsp;เบอร์ติดต่อ :</strong> ..........................................................</label> 
+            </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+
 
 

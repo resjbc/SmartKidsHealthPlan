@@ -51,7 +51,9 @@ export class AppComponent implements OnInit {
     showInputField: true,
     //disableUntil: {year: 2016, month: 8, day: 10},
     selectionTxtFontSize: '16px',
-
+    //disableSince: {year: new Date().getFullYear(), month: new Date().getMonth()+ 1, day: new Date().getDate()+1},
+    //disableUntil: {year: new Date().getFullYear(), month: new Date().getMonth()+ 1, day: new Date().getDate()+1},
+    disableDateRanges: [{begin: {year: new Date().getFullYear(), month: new Date().getMonth()+ 1, day: new Date().getDate()+1},end:  {year: new Date().getFullYear()+10000, month: new Date().getMonth()+ 1, day: new Date().getDate()}}]
   };
   public myForm: FormGroup;
 
@@ -71,12 +73,15 @@ export class AppComponent implements OnInit {
       // value.
       name: [''],
       address: [''],
+      nameEmp: [''],
+      telEmp: [''],
       myDate: ['', Validators.required],
       clinicDay: ['1', Validators.required]
       // other controls are here...
     });
 
-    this.today = new Date()
+    this.today = { date: {year: (new Date()).getFullYear(), month: (new Date()).getMonth() + 1, day: (new Date()).getDate()} };
+    
     /*
         let today = new Date().toLocaleDateString();
         console.log(today);
